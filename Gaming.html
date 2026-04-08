@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Tips     
+    </title>
+
+    <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins&family=Roboto&family=Titillium+Web&display=swap" rel="stylesheet" />
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/f8e1a90484.js" crossorigin="anonymous"></script>
+</head>
+
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+    }
+
+    .header {
+      min-height: 40vh;
+      width: 100vw;
+      background: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url('news Back.png ');
+      background-size: cover;
+      background-position: 0% center;
+      background-repeat: no-repeat;
+      animation: slideBg 20s linear infinite;
+      position: relative;
+    
+    }
+    
+    @keyframes slideBg {
+    from {
+        background-position: 0% center;
+    }
+    to {
+        background-position: 100% center;
+    }
+    }
+
+ 
+  
+
+    /* Responsive nav styles */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        background: transparent;
+        height: 100vh;
+        width: 200px;
+        top: 0;
+        right: -200px;
+        text-align: left;
+        z-index: 100;
+        transition: right 0.5s;
+        box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+      }
+
+      .nav-links ul {
+        display: block;
+        padding: 30px 0 0 20px;
+      }
+
+      .nav-links ul li {
+        display: block;
+        margin: 20px 0;
+      }
+
+      nav .fa-bars {
+        display: block;
+        color: #fff;
+        font-size: 28px;
+        cursor: pointer;
+      }
+
+      .nav-links .fa-times {
+        display: block;
+        color: #fff;
+        font-size: 28px;
+        cursor: pointer;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+    }
+
+            /* Section Three */
+        .Gaming {
+            padding: 40px 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        /* Flex container for the two sections inside 'three' */
+        .Gaming-content {
+            display: flex;
+            flex-direction: row; /* Display sections side by side */
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 20px;
+        }
+
+        .Gaming h1 {
+            font-size: 3.5rem;
+            color: #222;
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .Gaming h3 {
+            font-size: 2rem;
+            padding-left: 8%;
+            color: #444; 
+            margin-bottom: 15px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .Gaming p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: justify;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        /* gallary section */
+
+        .gallery-section {
+            text-align: center;
+            padding: 2rem 1rem;
+          }
+
+          .gallery-section h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #2d3e50;
+          }
+
+          .gallery-grid {
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 1rem;
+              max-width: 1100px;
+              margin: 0 auto;
+          }
+
+          .gallery-grid img {
+              width: 100%;
+              height: 250px;
+              object-fit: cover;
+              border-radius: 8px;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+              transition: transform 0.3s ease;
+          }
+          .gallery-grid img:hover {
+            transform: scale(1.03);
+          }
+
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 12px;
+            margin-bottom: 20px;
+        }
+
+          /* handle section */
+   .handle {
+            padding: 40px 20px;
+            background-color: #1e1e2f;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .handle h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: hotpink;
+        }
+
+        .handle table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #2e2e3e;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .handle th, .handle td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid #444;
+        }
+
+        .handle th {
+            background-color: #3a3a4d;
+            color: #f0f0f0;
+            font-weight: 600;
+        }
+
+        .handle td input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #444;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .handle td input[type="text"]::placeholder {
+            color: #bbb;
+        }
+
+        .remove-btn {
+            color: red;
+            cursor: pointer;
+            font-size: 1.2rem;
+            border: none;
+            background: none;
+        }
+       
+        
+        </style>
+<body>
+    <!-- header section -->
+
+       <section class="header">
+            <nav>
+            <div class="brand">
+            <img src="gam3rslooby.png" alt="logo">
+            <h3 class="logo">Yo-tekh</h3>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Gaming.html">Gaming Tips</a></li>
+                <li><a href="#">Healt&balance</a></li>
+                <li><a href="About.html">About Us</a></li>
+                </ul>
+            </div>
+            </nav>
+        </section>
+
+  <section class="Gaming">
+    <h1>Gaming </h1>
+    <div class="Gaming-content">
+      <div class="gaming-text">
+        <h3>Let's talk about gaming</h3>
+        <p>
+            Importance of gaming in our lives. Gaming has become a significant part of modern culture, providing entertainment, social interaction, and even educational opportunities. It fosters creativity, problem-solving skills, and teamwork. Moreover, gaming can serve as a stress reliever and a way to connect with others across the globe. As technology advances, the gaming industry continues to evolve, offering immersive experiences that captivate players of all ages. Whether through console gaming, PC gaming, or mobile apps, the impact of gaming on society is undeniable.
+            <br><br>
+            As we embrace this digital age, understanding the role of gaming in our lives becomes increasingly important.
+        </p>
+      </div>
+  
+      <div class="gaming-education">
+        <h3>Gaming and Education</h3>
+        <p>
+            The intersection of gaming and education has gained significant attention in recent years. Educational games, often referred to as "edutainment," leverage the engaging aspects of gaming to enhance learning experiences. These games can teach various subjects, from mathematics and science to history and language skills, making learning more interactive and enjoyable. By incorporating game mechanics, such as rewards, challenges, and competition, educators can motivate students to actively participate in their learning journey. 
+            <br><br>
+            Furthermore, gaming can foster critical thinking, problem-solving abilities, and collaboration among peers. As technology continues to advance, the potential for using gaming as a powerful educational tool will only grow, shaping the future of learning in innovative ways.
+            <br><br>
+            Our aim is to expose the people of George, even Western Cape, to the world of gaming, and our hope one day is to start our own gaming mini-center and even compete in esports with our own team. We also envision hosting tournaments at our own gaming center.
+        </p>
+      </div>
+    </div>
+
+    <section class="Gallary">
+      
+      <h1>Gallary </h1>
+       
+
+          <div class="gallery-grid">
+            <img src="Apex Gaming.jpg" alt="Mind and support">
+            <img src="FC25 gaming.jpg" alt="Clothes donation">
+            <img src="Naruto Gaming.jpg" alt="Shopping support">
+         
+  </section>
+                </a>
+            </div>
+
+            <h2 style="text-align:center;">Highlight Video</h2>
+            <div class="video-container">
+                <video width="320" height="240" controls>
+                    <source src="APex Video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Gamers Information Section -->
+    <section class="handle">
+      <h2>Gamers Information</h2>
+      <table id="gamersTable">
+          <thead>
+              <tr>
+                  <th>Handle</th>
+                  <th>Game Name</th>
+                  <th>Device</th>
+                  <th>Platform</th>
+                  <th>Action</th>
+              </tr>
+          </thead>
+          <tbody id="gamersTableBody">
+              <tr>
+                  <td><input type="text" id="handleInput" placeholder="Enter handle"></td>
+                  <td><input type="text" id="gameInput" placeholder="Enter game name"></td>
+                  <td><input type="text" id="deviceInput" placeholder="Enter device"></td>
+                  <td><input type="text" id="platformInput" placeholder="Enter platform"></td>
+                  <td></td>
+              </tr>
+          </tbody>
+      </table>
+      <div style="margin-top: 15px; text-align: center;">
+        <button onclick="addGamer()" style="padding: 10px 20px; background-color: hotpink; border: none; border-radius: 6px; color: white; cursor: pointer;">Add Gamer</button>
+    </div>
+  </section>
+
+     <!-- cemment section -->
+    <section class="comment-section">
+        <h2>Leave a Comment</h2>
+        <form id="commentForm">
+          <textarea id="commentInput" name="comment" placeholder="Your comment..." required></textarea>
+          <button type="button" onclick="postComment()">leave a comment</button>
+        </form>
+        <div id="postedEmailSection" class="posted-email" style="display: none;">
+          <h3>anonymous</h3>
+          <p id="postedComment"></p>
+        </div>
+      </section>
+      
+     
+
+     <!-- Footer -->
+     <footer style="background-color: #000; color: white; padding: 40px 20px; text-align: center;">
+  
+        <div style="margin-bottom: 10px;">
+          <strong>Gamers Lobby</strong>
+          <span style="color: #fdd835;">gam3rslobby@gmail.com</span>
+        </div>
+        <div style="font-size: 12px; color: #aaa;">
+       
+        </div>
+      </footer>
+    </section>
+
+  <script>
+    const navLinks = document.getElementById("navLinks");
+
+    function showMenu() {
+      navLinks.style.right = "0";
+    }
+
+    function hideMenu() {
+      navLinks.style.right = "-200px";
+    }
+
+    // Optional: close nav when clicking outside on mobile
+    window.addEventListener('click', function(e) {
+      if (window.innerWidth <= 768 && navLinks.style.right === "0px") {
+        if (!navLinks.contains(e.target) && !document.getElementById('openNav').contains(e.target)) {
+          hideMenu();
+        }
+      }
+    });
+  </script>
+
+ 
+    
+</body>
+</html>

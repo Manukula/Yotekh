@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yo-tekh</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Tomorrow:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/f8e1a90484.js" crossorigin="anonymous"></script>
+
+</head>
+
+<style>
+   *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background: #001d3d;
+    color: white;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;  /* 🔥 pushes left & right */
+    align-items: center;
+}
+
+/* Logo */
+nav img{
+    width: 100px;
+}
+
+h3.logo{
+    font-size: 1.5rem;
+    color: orange;
+    margin-left: 10px;
+    font-family: 'Tomorrow', sans-serif;
+    font-weight: 700; /* Bold */
+}
+
+.brand{
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Logo image */
+.brand img{
+    width: 100px;
+    transition: transform 0.4s ease;
+}
+
+/* Text hidden initially */
+.brand .logo{
+    position: absolute;
+    left: 110px;
+    transform: translateX(-30px);   /* Start hidden left */
+    opacity: 0;
+    transition: all 0.4s ease;
+    color: orange;
+    font-family: 'Tomorrow', sans-serif;
+    font-weight: 700;
+    white-space: nowrap;
+    text-shadow: 0 0 8px orange;
+}
+
+/* Hover Effects */
+.brand:hover img{
+    transform: scale(1.08);  /* Slight zoom */
+}
+
+.brand:hover .logo{
+    transform: translateX(0);  /* Slide in */
+    opacity: 1;
+}
+
+/* Nav links container */
+.nav-links ul{
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+/* Links */
+.nav-links ul li a{
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links ul li a:hover{
+    color: orange;
+}
+
+/* WELCOME SECTION */
+.welcome{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Transparent Background Image */
+.welcome::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('gamingB.jpg') center/cover no-repeat;
+    opacity: 0.19;  
+    z-index: -1;
+}
+
+.welcome h1{
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+     font-family: 'Tomorrow', sans-serif;
+    font-weight: 700; /* Bold */
+}
+
+.welcome h3{
+    max-width: 800px;
+    font-weight: 300;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.read{
+    padding: 12px 25px;
+    border: none;
+    background: orange;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.read:hover{
+    background: #ffaa00;
+}
+
+/* NEWS SECTION */
+
+
+    
+
+.news-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    background: #000814;
+    margin-top: 40px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+.news-section h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 50px;
+    position: relative;
+     font-family: 'Tomorrow', sans-serif;
+    font-weight: 700; /* Bold */
+}
+
+.news-section h2::after {
+    content: '';
+    width: 60px;
+    height: 3px;
+    background-color: orange;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.news-card {
+    background: #001f54;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.news-card:hover{
+    transform: translateY(-8px);
+}
+
+.news-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.news-content {
+    padding: 20px;
+}
+
+.news-content h3 {
+    font-size: 1.3rem;
+    color: orange;
+    margin-bottom: 10px;
+}
+
+.news-content p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.news-content a{
+    color: #ffd60a;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.news-content a:hover{
+    text-decoration: underline;
+}
+
+/* DISCOVER SECTION */
+.discover-section{
+    padding: 100px 20px;
+    text-align: center;
+    background: linear-gradient(to right, #1e3c72, #9c27b0);
+}
+
+.discover-section h2{
+    font-size: 3rem;
+    font-family: 'Tomorrow', sans-serif;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.discover-sub{
+    margin-bottom: 60px;
+    font-size: 1.1rem;
+    color: #eee;
+}
+
+/* Slider Layout */
+.discover-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.discover-slider{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+/* Platform Images */
+.platform img{
+    width: 180px;
+    transition: 0.4s ease;
+}
+
+/* Smaller side images */
+.platform.small img{
+    width: 160px;
+    opacity: 0.7;
+}
+
+/* Bigger center image */
+.platform.large img{
+    width: 260px;
+    transform: scale(1.1);
+}
+
+/* Hover Effect */
+.platform img:hover{
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+/* Arrows */
+.arrow{
+    background: transparent;
+    border: none;
+    font-size: 2.5rem;
+    color: black;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.arrow:hover{
+    color: white;
+}
+
+
+
+
+
+/* LINK UP SECTION */
+.link-section{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.link-section h2{
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    position: relative;
+    font-family: 'Tomorrow', sans-serif;
+    font-weight: 700;
+    
+}
+
+/* GRID LAYOUT */
+.link-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;  /* 2 columns */
+    gap: 50px;
+    align-items: center;
+    margin-top: 60px;
+}
+
+/* LEFT IMAGE */
+.link-image img{
+    width: 100%;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+/* RIGHT SIDE STACK */
+.link-content{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* CARD STYLE */
+.link-card{
+    background: #001f54;
+    padding: 25px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.link-card:hover{
+    transform: translateY(-6px);
+}
+
+.link-card img{
+    width: 80px;
+    margin-bottom: 15px;
+}
+
+.link-card h3{
+    font-family: 'Tomorrow', sans-serif;
+    font-size: 1.4rem;
+    color: orange;
+    margin-bottom: 10px;
+}
+
+.link-card p{
+    line-height: 1.6;
+    color: #ddd;
+    text-shadow: 0 0 6px rgba(255,165,0,0.5);
+}
+
+/* mobile sections */
+
+/* ========================= */
+/* MOBILE RESPONSIVE DESIGN  */
+/* ========================= */
+
+@media (max-width: 1024px){
+
+    /* Reduce section padding */
+    .news-section,
+    .discover-section,
+    .link-section{
+        padding: 60px 15px;
+    }
+
+    .welcome h1{
+        font-size: 2.2rem;
+    }
+
+    .welcome h3{
+        font-size: 1rem;
+    }
+
+    .discover-section h2{
+        font-size: 2.2rem;
+    }
+}
+
+
+/* TABLET & SMALLER */
+@media (max-width: 900px){
+
+    /* Stack navbar links vertically (optional if adding hamburger later) */
+    .nav-links ul{
+        gap: 15px;
+    }
+
+    /* DISCOVER STACK */
+    .discover-container{
+        flex-direction: column;
+        gap: 20px;
+    }
+
+  .discover-slider{
+    display: flex;
+    gap: 40px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.discover-slider::-webkit-scrollbar{
+    display: none;
+}
+
+.platform{
+    flex: 0 0 auto;
+}
+
+    .platform.large img{
+        width: 200px;
+    }
+
+    .platform.small img{
+        width: 130px;
+    }
+
+    /* LINK GRID STACK */
+    .link-grid{
+        grid-template-columns: 1fr;
+    }
+
+    .link-image{
+        text-align: center;
+    }
+
+}
+
+
+/* MOBILE PHONES */
+@media (max-width: 600px){
+
+    /* Navbar spacing */
+    nav{
+        padding: 10px;
+    }
+
+    .brand img{
+        width: 80px;
+    }
+
+    .brand .logo{
+        left: 90px;
+        font-size: 1.2rem;
+    }
+
+    /* Welcome section */
+    .welcome{
+        height: auto;
+        padding: 80px 15px;
+    }
+
+    .welcome h1{
+        font-size: 1.8rem;
+    }
+
+    .welcome h3{
+        font-size: 0.95rem;
+    }
+
+    .read{
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    /* News grid */
+    .news-grid{
+        grid-template-columns: 1fr;
+    }
+
+    /* Discover */
+    .platform img{
+        width: 120px !important;
+    }
+
+    .arrow{
+        font-size: 2rem;
+    }
+
+    /* Link cards */
+    .link-card{
+        padding: 20px;
+    }
+
+    .link-card img{
+        width: 60px;
+    }
+
+
+    /* menu  */
+}
+
+/* menu */
+
+/* HAMBURGER */
+.hamburger{
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* Mobile Navbar */
+@media (max-width: 900px){
+
+    .hamburger{
+        display: block;
+    }
+
+    .nav-links{
+        position: absolute;
+        top: 70px;
+        right: -100%;
+        background: #000814;
+        width: 250px;
+        height: 100vh;
+        padding-top: 40px;
+        transition: 0.4s ease;
+    }
+
+    .nav-links ul{
+        flex-direction: column;
+        gap: 25px;
+        padding-left: 20px;
+    }
+
+    .nav-links.active{
+        right: 0;
+    }
+}
+
+</style>
+<body>
+    <div id="site-header"></div>
+    <script src="header.js"></script>
+
+  <section class="welcome">
+    <h1>Yo-tekh more than fixing and more tham gaming</h1>
+    <h3>YoTekh, we are passionate about creating a vibrant community for gamers of all levels. Whether you're a casual player or a competitive enthusiast, our platform is designed to connect you with like-minded individuals who share your love for gaming. Join us to stay updated on the latest gaming news, participate in exciting events, and discover tips and tricks to enhance your gaming experience.</h3>
+
+    <button class="read">Read More</button>
+
+
+  </section>
+
+  
+
+   <section class="news-section">
+        <h2>What we offer</h2>
+        <div class="news-grid">
+            <div class="news-card">
+                <img src="OFFER/fix.jpg" alt="fix">
+                <div class="news-content">
+                    <h3>Computer Support</h3>
+                    <p>Our team specializes in entry-level computer repairs and upgrades to improve performance. We also handle software installations and resolve issues with crashed or malfunctioning Windows systems. <br>
+                        <a href="read more.html" target="_blank">Read more</a>
+                    </p> 
+                </div>
+            </div>
+    
+            <div class="news-card">
+                <img src="OFFER/clean.png" alt="clean">
+                <div class="news-content">
+                    <h3>Console Care</h3>
+                    <p>Boost your product and service's credibility by adding testimonials from your clients. People love r <a href="news.html" target="_blank">Read more</a>
+                    </p>
+                </div>
+            </div>
+    
+            <div class="news-card">
+                <img src="OFFER/tournment 1.jpg" alt="tournment">
+                <div class="news-content">
+                    <h3>Need a Poster</h3>
+                    <p>Whether you need a digital or physical poster, our team is more than capable of bringing your vision to life. With creativity, skill, and attention to detail, we’re ready to design eye-catching posters tailored to your needs.<br>
+                        <a href="read more.html" target="_blank">Read more</a>
+                    </p>
+                </div>
+            </div>
+    
+            <div class="news-card">
+                <img src="OFFER/DIY.jpg" alt="DIY">
+                <div class="news-content">
+                    <h3>DIY</h3>
+                    <p>Check out our DIY about the gaming platforms uyou are using and dicvover more.<br>
+                        <a href="news.html" target="_blank">Read more</a>
+                    </p>
+                </div>
+            </div>
+    
+       
+            <div class="news-card">
+                <img src="OFFER/webd.png" alt="WEB">
+                <div class="news-content">
+                    <h3>WEB DESIGN</h3>
+                    <p>Did you know that you can fix your computer<br>
+                        just by doing these little things?<br>
+                        <a href="DIY.html" target="_blank">Read more</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="discover-section">
+
+    <h2>DISCOVER</h2>
+    <p class="discover-sub">
+        Discover the best perks about your gaming platform. Click below to explore!
+    </p>
+
+    <div class="discover-container">
+
+        <button class="arrow left">&#10094;</button>
+
+        <div class="discover-slider">
+
+            <div class="platform small">
+                <img src="DIY/playstation p.jpg" alt="Xbox">
+            </div>
+
+            <div class="platform small">
+                <img src="DIY/OIP (1).jpeg" alt="PlayStation">
+            </div>
+
+            <div class="platform large">
+                <img src="DIY/XBOX p.jpg" alt="Nintendo Switch">
+            </div>
+
+            <div class="platform small">
+                <img src="steam.jpg" alt="Epic Games">
+            </div>
+
+            <div class="platform small">
+                <img src="DIY/Switch.png" alt="Steam">
+            </div>
+
+        </div>
+
+        <button class="arrow right">&#10095;</button>
+
+    </div>
+
+</section>
+
+<section class="link-section">
+    <h2>Link Up With Our Community</h2>
+    <p class="link-subtext">
+        Gaming is better together. Build lasting friendships and grow as a player.
+    </p>
+
+    <div class="link-grid">
+
+        <!-- LEFT SIDE IMAGE -->
+        <div class="link-image">
+            <img src="Linkup/ppl.jpeg" alt="Community">
+        </div>
+
+        <!-- RIGHT SIDE CONTENT -->
+        <div class="link-content">
+
+            <div class="link-card">
+                <img src="Linkup/support.png" alt="Support">
+                <h3>Support</h3>
+                <p>Find encouragement and support from understanding peers.</p>
+            </div>
+
+            <div class="link-card">
+                <img src="Linkup/connect.png" alt="Connect">
+                <h3>Connect</h3>
+                <p>Build strong friendships and team up with other gamers.</p>
+            </div>
+
+            <div class="link-card">
+                <img src="Linkup/communication.png" alt="Communication">
+                <h3>Communication</h3>
+                <p>Share strategies, tips, and experiences with fellow players</p>
+            </div>
+
+             <div class="link-card">
+                <img src="Linkup/tropy.png" alt="Competition">
+                <h3>Compete</h3>
+                <p>Participate in friendly competitions and events.</p>
+            </div>
+          </div>
+
+    </div>
+</section>
+
+<script src="script.js"></script>
+
+
+
+    
+</body>
+</html>

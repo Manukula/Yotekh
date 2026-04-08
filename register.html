@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register </title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+   
+<body>
+        <section class="header">
+            <nav>
+            <div class="brand">
+            <img src="gam3rslooby.png" alt="logo">
+            <h3 class="logo">Yo-tekh</h3>
+            </div>
+            <i class="fa fa-bars" id="menuIcon" onclick="showMenu()"></i>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                   
+                </ul>
+            </div>
+            </nav>
+        </section>
+
+
+       <section class="form">
+    <div class="form-card">
+        <h1>Register</h1>
+        <p class="form-intro">Sign up to compete and</p>
+        <form id="registerForm" action="register.php" method="post" enctype="multipart/form-data">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+
+            <div class="form-group">
+                <label for="competition">Choose your category:</label>
+                <select name="competition" id="competition" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="FC25">Compete for FC25</option>
+                    <option value="Game Player">Game Player</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="profile_image">Upload Proof of payment:</label>
+                <input type="file" name="profile_image" id="profile_image" accept="image/*">
+            </div>
+
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+    </div>
+</section>
+
+       <section class="comment-section">
+        <h2>Leave a Comment</h2>
+        <form id="commentForm">
+          <textarea id="commentInput" name="comment" placeholder="Your comment..." required></textarea>
+          <button type="button" onclick="postComment()">leave a comment</button>
+        </form>
+        <div id="postedEmailSection" class="posted-email" style="display: none;">
+          <h3>anonymous</h3>
+          <p id="postedComment"></p>
+        </div>
+      </section>
+
+        <footer style="background-color: #000; color: white; padding: 40px 20px; text-align: center;">
+  
+        <div style="margin-bottom: 10px;">
+          <strong>Gamers Lobby</strong>
+          <span style="color: #fdd835;">gam3rslobby@gmail.com</span>
+        </div>
+        <div style="font-size: 12px; color: #aaa;">
+       
+        </div>
+      </footer>
+
+      <script src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"></script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          if (typeof emailjs === 'undefined') {
+            console.error('EmailJS SDK failed to load.');
+            return;
+          }
+
+          emailjs.init('YOUR_PUBLIC_KEY');
+
+          const registerForm = document.getElementById('registerForm');
+          if (!registerForm) return;
+
+          registerForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const formData = new FormData(registerForm);
+            const username = formData.get('username') || '';
+            const userEmail = formData.get('email') || '';
+            const competition = formData.get('competition') || '';
+            const message = `New registration received:\nUsername: ${username}\nEmail: ${userEmail}\nCategory: ${competition}`;
+
+            const adminParams = {
+              to_email: 'nkosi@inkcubeko.org.za',
+              user_name: username,
+              user_email: userEmail,
+              competition,
+              message
+            };
+
+            const participantParams = {
+              to_email: userEmail,
+              user_name: username,
+              competition,
+              message: `Thank you for registering! Here are your details:\n${message}`
+            };
+
+            Promise.all([
+              emailjs.send('service_885i0iw', 'template_3f7db48', adminParams),
+              emailjs.send('service_885i0iw', 'template_3f7db48', participantParams)
+            ])
+              .then(function () {
+                alert('Registration submitted and emails were sent successfully.');
+                registerForm.reset();
+              })
+              .catch(function (error) {
+                console.error('EmailJS error', error);
+                alert('Error sending emails. Please try again later.');
+              });
+          });
+        });
+      </script>
+    
+</body>
+</html>

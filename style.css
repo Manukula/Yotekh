@@ -1,0 +1,337 @@
+nav{
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    margin-right: 50px;
+    
+}
+
+/* Logo */
+nav img{
+    width: 100px;
+}
+
+h3.logo{
+    font-size: 1.5rem;
+    color: orange;
+    margin-left: 5px;
+    font-family: 'Mokoto', sans-serif;
+    font-weight: 700; /* Bold */
+    padding: 40px 0;
+  
+}
+
+.brand{
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Logo image */
+.brand img{
+    width: 100px;
+    transition: transform 0.4s ease;
+}
+
+/* Text hidden initially */
+.brand .logo{
+    position: absolute;
+    left: 110px;
+    transform: translateX(-30px);   /* Start hidden left */
+    opacity: 0;
+    transition: all 0.4s ease;
+    color: orange;
+    font-family: 'Tomorrow', sans-serif;
+    font-weight: 700;
+    white-space: nowrap;
+    text-shadow: 0 0 8px orange;
+}
+
+/* Hover Effects */
+.brand:hover img{
+    transform: scale(1.08);  /* Slight zoom */
+}
+
+.brand:hover .logo{
+    transform: translateX(0);  /* Slide in */
+    opacity: 1;
+}
+
+/* Nav links container */
+.nav-links ul{
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+/* Links */
+.nav-links ul li a{
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links ul li a:hover{
+    color: orange;
+}
+
+.nav-links ul li::after {
+      content: '';
+      width: 0%;
+      height: 2px;
+      background: #f44336;
+      display: block;
+      margin: auto;
+      transition: 0.5s;
+    }
+
+      nav .fa-bars {
+      display: none;
+    }
+
+    nav .fa-times {
+      display: none;
+    }
+
+ .nav-links ul li:hover::after {
+      width: 100%;
+    }
+
+/* Comment section styling */
+    .comment-section {
+        padding: 60px 20px;
+        background-color: #2bc9e9;
+        text-align: center;
+        max-width: 1000%;
+        padding: 2rem;
+        margin: 0 auto;
+
+    }
+
+    .comment-section h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .comment-section form {
+        max-width: 600px;
+        margin: 0 auto 30px;
+    }
+
+    .comment-section textarea {
+        width: 100%;
+        padding: 15px;
+        font-size: 1rem;
+        border: 1px solid    #ccc;
+        border-radius: 6px;
+        resize: vertical;
+        min-height: 100px;
+        font-size: 1rem;
+    }
+
+    .comment-section button {
+        margin-top: 10px;
+        padding: 10px 25px;
+        background-color: #001d3d;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .comments-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+}
+    .comment-card {
+        background: #f1f1f1;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+    .posted-email {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+    }
+
+    .posted-email h3 {
+        color: #001d3d;
+        margin-bottom: 10px;
+    }
+
+    .posted-email p {
+        font-size: 1rem;
+        color: #333;
+    }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .game-day-flex {
+    flex-direction: column;
+    gap: 32px;
+    align-items: stretch;
+  }
+  .game-day-carousel, .game-day-info {
+    max-width: 100%;
+    min-width: 0;
+  }
+  .carousel img {
+    width: 120px;
+    height: 80px;
+  }
+}
+
+body {
+  background: radial-gradient(circle at top, #11131d 0%, #08090f 45%, #020305 100%);
+  color: #eef2ff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  padding: 80px 20px 40px;
+}
+
+.form-card {
+  position: relative;
+  width: min(100%, 460px);
+  background: rgba(12, 18, 40, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 28px;
+  padding: 42px 36px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.form-card::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -30%;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(255, 167, 38, 0.18), transparent 58%);
+  filter: blur(15px);
+}
+
+.form h1 {
+  margin: 0 0 10px;
+  font-size: 2.4rem;
+  letter-spacing: 0.08em;
+  color: #ffb703;
+  text-align: center;
+}
+
+.form-intro {
+  margin: 0 0 28px;
+  color: #cfd8fc;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.form form {
+  display: grid;
+  gap: 18px;
+}
+
+.form input {
+  width: 100%;
+  padding: 15px 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: #f7f7ff;
+  font-size: 1rem;
+  transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.form input::placeholder {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.form input:focus,
+.form select:focus,
+.form input[type="file"]:focus {
+  outline: none;
+  border-color: #ffb703;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 4px rgba(255, 183, 3, 0.12);
+}
+
+.form-group {
+  display: grid;
+  gap: 10px;
+}
+
+.form label {
+  color: #d7dff5;
+  font-size: 0.94rem;
+  font-weight: 600;
+}
+
+.form select,
+.form input[type="file"] {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: #f7f7ff;
+  font-size: 1rem;
+  transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.form select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.form input[type="file"] {
+  padding: 11px 16px;
+}
+
+.form button {
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: 16px;
+  border: none;
+  background: linear-gradient(135deg, #ff7a18 0%, #ffb703 100%);
+  color: #08101f;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(255, 183, 3, 0.2);
+}
+
+@media (max-width: 600px) {
+  .form {
+    padding: 50px 16px 30px;
+  }
+
+  .form-card {
+    padding: 32px 24px;
+  }
+}
