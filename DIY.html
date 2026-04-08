@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DIY</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="Styles.css">
+  <link rel="stylesheet" href="script.js">
+
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Header Section */
+    .header {
+      position: relative;
+      width: 100%;
+      height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(45deg, #3A86FF, #8338EC, #FF006E, #FB5607, #FFBE0B);
+      background-size: 300% 300%;
+      animation: gradientBG 10s ease infinite;
+      color: white;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .header h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .header p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    nav {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    nav .fa-bars {
+      font-size: 28px;
+      color: white;
+      cursor: pointer;
+      display: none;
+    }
+
+    .nav-links {
+      flex: 1;
+      text-align: right;
+    }
+
+    .nav-links ul {
+      list-style: none;
+    }
+
+    .nav-links ul li {
+      display: inline-block;
+      margin-left: 20px;
+    }
+
+    .nav-links ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      position: relative;
+    }
+
+    .nav-links ul li a::after {
+      content: '';
+      height: 2px;
+      width: 0;
+      background: #f44336;
+      display: block;
+      margin: auto;
+      transition: 0.3s;
+    }
+
+    .nav-links ul li a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links .fa-times {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      nav .fa-bars {
+        display: block;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -200px;
+        height: 100vh;
+        width: 200px;
+        background: transparent;
+        text-align: left;
+        transition: 0.5s ease;
+        padding-top: 60px;
+      }
+
+      .nav-links ul {
+        display: block;
+        padding-left: 20px;
+      }
+
+      .nav-links ul li {
+        display: block;
+        margin: 20px 0;
+      }
+
+      .nav-links .fa-times {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 28px;
+        cursor: pointer;
+        color: white;
+        display: block;
+      }
+    }
+
+    /* Recoil (XBOX Section) and Carousel styles remain the same from your previous input... */
+
+    .content {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      padding: 40px 20px;
+      color: grey;
+    }
+
+    .text-content, .image-content {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .text-content h1 {
+      font-size: 2.2rem;
+      color: #107c10;
+    }
+
+    .text-content h2 {
+      font-size: 1.5rem;
+      color: #f513b5;
+    }
+
+    .text-content p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    ul {
+      margin: 10px 0 20px 20px;
+      padding: 0;
+    }
+
+    .image-content h2 {
+      font-size: 1.4rem;
+      color: #f513b5;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      max-width: 100%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 0.4s ease-in-out;
+    }
+
+    .carousel img {
+      height: 350px;
+      width: auto;
+      max-width: 100%;
+      border-radius: 10px;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+
+    .controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .controls i {
+      pointer-events: auto;
+      background: white;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .controls i:hover {
+      background: #eee;
+    }
+
+    @media (max-width: 768px) {
+      .content {
+        flex-direction: column;
+      }
+
+      .carousel img {
+        height: 140px;
+      }
+
+      .text-content h1 {
+        font-size: 1.8rem;
+      }
+
+      .text-content h2,
+      .image-content h2 {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* PPSSPP Section */
+    .ppsspp-content {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto 60px auto;
+      color: #333;
+    }
+
+    .ppsspp-text {
+      flex: 1 1 60%;
+      min-width: 280px;
+      color: #222;
+    }
+
+    .ppsspp-text p {
+      line-height: 1.6;
+      margin-bottom: 15px;
+      color: #181828;
+    }
+
+    .get {
+      flex: 1 1 35%;
+      min-width: 280px;
+      background: #f5f5f5;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+      color: #107c10;
+    }
+
+    .get h1, .get h2 {
+      margin-top: 0;
+    }
+
+    .get a {
+      color: #f513b5;
+      text-decoration: none;
+    }
+
+    .get a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .ppsspp-content {
+        flex-direction: column;
+      }
+
+      .ppsspp-text,
+      .get {
+        flex: 1 1 100%;
+      }
+    }
+
+
+    /* Reset some default styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body styling */
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Main section styling */
+section.recoil {
+  padding: 40px 20px;
+  background-color: #fff;
+}
+
+/* Container styles */
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Text content styles */
+.text-content {
+  flex: 1 1 45%;
+}
+.text-content h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+.text-content h2 {
+  font-size: 2em;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #34495e;
+}
+.text-content p {
+  margin-bottom: 15px;
+}
+.text-content ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+.text-content ul li {
+  margin-bottom: 8px;
+}
+
+/* Image content styles */
+.image-content {
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.image-content h2 {
+  margin-bottom: 15px;
+  font-size: 2em;
+  color: #2c3e50;
+}
+.wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+.carousel img {
+  min-width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+}
+.controls {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  padding: 0 10px;
+  transform: translateY(-50%);
+}
+.controls button {
+  background-color: rgba(0,0,0,0.5);
+  border: none;
+  color: #fff;
+  font-size: 2em;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+.controls button:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .text-content,
+  .image-content,
+  .ppsspp-text,
+  .get {
+    flex: 1 1 100%;
+  }
+
+  .carousel {
+    flex-direction: row;
+    gap: 10px;
+    padding: 0;
+    cursor: grab;
+  }
+
+  .carousel img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    margin: 0 auto;
+  }
+
+  .image-content {
+    align-items: stretch;
+    padding: 0 10px;
+  }
+
+  .image-content h2 {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .wrapper {
+    width: 100%;
+  }
+
+  .controls {
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+
+/* PPSSPP section styles */
+.ppsspp-content {
+  background-color: #e8f0f2;
+  padding: 30px 20px;
+  border-radius: 10px;
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.ppsspp-text {
+  flex: 1 1 60%;
+}
+.ppsspp-text h1 {
+  font-size: 2.2em;
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+.ppsspp-text p {
+  margin-bottom: 15px;
+}
+.get {
+  flex: 1 1 35%;
+}
+.get h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+.get h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 1.5em;
+  color: #34495e;
+}
+.get ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+.get ul li {
+  margin-bottom: 10px;
+}
+.get a {
+  color: #2980b9;
+  text-decoration: none;
+}
+.get a:hover {
+  text-decoration: underline;
+}
+
+/* PC Gaming section styles */
+section.PC-Gaming {
+  padding: 40px 20px;
+  background-color: #fff;
+  margin-top: 50px;
+  border-radius: 10px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+section.PC-Gaming h1 {
+  font-size: 2.5em;
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+section.PC-Gaming h2 {
+  font-size: 1.8em;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #34495e;
+}
+section.PC-Gaming p {
+  margin-bottom: 15px;
+}
+h3 {
+  margin-top: 25px;
+  font-size: 1.6em;
+  color: #2c3e50;
+}
+a {
+  color: #2980b9;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Additional styling for responsiveness */
+@media(max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+  .text-content, .image-content, .ppsspp-text, .get {
+    flex: 1 1 100%;
+  }
+  .carousel {
+    flex-direction: column;
+  }
+  .controls {
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER SECTION -->
+  <section class="header">
+    <nav>
+      <i class="fa fa-bars" onclick="showMenu()"></i>
+      <div class="nav-links" id="navLinks">
+        <i class="fa fa-times" onclick="hideMenu()"></i>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="linkup.html">News</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <h1>DIY</h1>
+    <p>Discover the best perks about your gaming platform. Learn how to fix common issues and optimize your gaming experience with our DIY tips and tricks!</p>
+  </section>
+
+  <!-- MAIN CONTENT SECTION -->
+  <section class="recoil">
+    <div class="content">
+      <div class="text-content">
+        <h1>XBOX</h1>
+        <h2>GAME Pass</h2>
+        <p>
+          Xbox Game Pass Ultimate includes online console multiplayer and hundreds of high-quality games. Play games with friends on console and PC and get an EA Play membership – all for one low monthly price.
+        </p>
+        <p>
+          The best thing about this Game Pass is that it comes with some cool perks like:
+        </p>
+        <ul>
+          <li>Playing EA games</li>
+          <li>Game discounts</li>
+          <li>Multiplayer perks</li>
+        </ul>
+        <p>
+          Instead of paying for an EA membership alone, just add a few extra bucks and pay for the Xbox Ultimate Pass.
+        </p>
+      </div>
+      <div class="image-content">
+        <h2>Cool Games Perks</h2>
+        <div class="wrapper">
+          <div class="carousel">
+            <img src="fc24.jpg" alt="FC24">
+            <img src="sifu.avif" alt="Sifu">
+            <img src="Tech and Gaming Retail Website in Dark Blue and Pink Simple Dark Style.png" alt="Promo">
+            <img src="storm 4.jpeg" alt="Storm 4">
+          </div>
+          <div class="controls">
+            <i class="prev" onclick="moveCarousel(-1)">&#10094;</i>
+            <i class="next" onclick="moveCarousel(1)">&#10095;</i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ppsspp-content">
+      <div class="ppsspp-text">
+        <h1>PPSSPP</h1>
+        <p>Did you know you can play PPSSPP games on your phone and also on your Laptop or PC?</p>
+        <p>We know not everybody can afford a gaming PC or console.</p>
+        <p>But do not let that stop you! You can still enjoy gaming on even low-end PCs like Celeron or i3—for free!</p>
+        <img src="ppsspp.png" alt="PPSSPP Emulator" style="max-width: 100%; border-radius: 10px; margin-top: 20px;">
+      </div>
+
+      <div class="get">
+        <h1>Links to Download</h1>
+        <p><a href="https://www.ppsspp.org/download/" target="_blank">Download PPSSPP Emulator</a></p>
+        <h2>Get Games</h2>
+        <ul>
+          <li><a href="https://coolrom.com.au/roms/psp/" target="_blank">Cool ROMs</a></li>
+          <li><a href="https://www.emulatorgames.net/roms/playstation-portable/2/" target="_blank">EmulatorGames</a></li>
+          <li><a href="https://www.freeroms.com/" target="_blank">FreeROMs</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <Section class="PC-Gaming">
+  <h1>PC Gaming</h1>
+  <p>PC gaming is a great way to enjoy games with high graphics and performance. You can customize your gaming experience with various hardware and software options.</p>
+  <p>Whether you prefer single-player adventures or multiplayer battles, PC gaming offers a wide range of genres and titles to explore.</p>
+  <p>From indie games to AAA blockbusters, the PC gaming community is vibrant and diverse. Join forums, watch streams, and connect with fellow gamers to enhance your experience.</p>
+
+  <h2>How to dowload pc games</h2>
+  <p>Downloading PC games is easy and convenient. You can use platforms like Steam, Epic Games Store, or GOG to purchase and download games directly to your computer.</p>
+  <p>Simply create an account, browse the game library, and follow the instructions to download your chosen game. Many platforms also offer free games and regular sales, so keep an eye out for great deals!</p>
+  <p>Additionally, you can find free games on websites like Itch.io or GameJolt, where indie developers share their creations.</p>
+
+  <h2>How to dowload Pc games method 2</h2>
+  <p>Another method to download PC games is through torrenting. This involves downloading game files from peer-to-peer networks. However, be cautious as this method can lead to legal issues and potential malware.</p>
+  <img src="street fighter.jpg" alt="">
+  <p>Always ensure you are downloading from reputable sources and consider using a VPN for added security. Torrenting can be a way to access games that are not available on mainstream platforms, but it is essential to respect copyright laws and support game developers.</p>
+
+  <h3>My relayble Torenting site</h3>
+  <p>One of my favorite torrenting sites is <a href="https://torgamez.com/wrc-8-fia-world-rally-championship/" target="_blank">Torgamez</a>. It has a user-friendly interface and a wide selection of games, movies, and software.</p>
+  <p>Always check the comments and ratings before downloading to ensure the files are safe and note this games donwloaded with the use of torrenting are not legal and can lead to legal issues and also not allow you to play online.</p>
+
+  <h2>uttorent Links</h2>
+  <div class="get-links">
+    <h3>Get Games</h3>
+        <ul>
+          <li><a href="https://fitgirl-repacks.site/" target="_blank">fit-girl</a></li>
+          <li><a href="https://torgamez.com/naruto-shippuden-ultimate-ninja-storm-4/" target="_blank">Torgamez</a></li>
+          <li><a href=https://itorrents-igruha.org/1109-01-naruto-shippuden-ultimate-ninja-storm-4-repack-ot-xatab.html target="_blank">itorrents-igruha</a></li>
+        </ul>
+
+  </div>
+</Section>
+
+  <section class="comment-section">
+  <h1>Share Your Gaming Tips & Tricks</h1>
+  <p>and Leave us a comment </p>
+
+  <form id="commentForm">
+    <textarea id="commentInput" name="comment" placeholder="Your comment..." required></textarea>
+    <button type="submit">Leave a Comment</button>
+  </form>
+
+  <div id="commentsGrid" class="comments-grid"></div>
+</section>
+
+
+  
+
+ <!-- Footer -->
+ <footer style="background-color: #000; color: white; padding: 40px 20px; text-align: center;">
+  
+    <div style="margin-bottom: 10px;">
+      <strong>Gamers Lobby</strong>
+      <span style="color: #fdd835;">gam3rslobby@gmail.com</span>
+    </div>
+    <div style="font-size: 12px; color: #aaa;">
+   
+    </div>
+  </footer>
+</section>
+
+
+</body>
+</html>
